@@ -1,0 +1,39 @@
+{
+  "name": "dd4you/lgs",
+  "description": "Store general settings like website name, logo url, contacts in the database easily. Everything is cached, so no extra query is done",
+  "keywords": [
+    "laravel",
+    "settings",
+    "laravel settings",
+    "global settings",
+    "laravel global settings"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "DD4You\\Lgs\\": "src/"
+    },
+    "files": [
+      "src/Helpers/settingsHelper.php"
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "DD4You\\Lgs\\LgsServiceProvider"
+      ],
+      "aliases": {
+        "Setting": "DD4You\\Lgs\\Facades\\Setting"
+      }
+    }
+  },
+  "authors": [
+    {
+      "name": "Vinay Singh",
+      "email": "vinay@dd4you.in"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {}
+}

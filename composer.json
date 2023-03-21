@@ -34,6 +34,6 @@
       "email": "vinay@dd4you.in"
     }
   ],
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "require": {}
 }

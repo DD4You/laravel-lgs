@@ -26,7 +26,7 @@ class GlobalSetting extends Model
                 'type' => $valueArr['type'] ?? $this->textType(),
                 'label' => $valueArr['label'],
                 'hint' => $valueArr['hint'] ?? 'Enter ' . $valueArr['label'],
-                'value' => $valueArr['value'],
+                'value' =>  isset($valueArr['type']) && $valueArr['type'] === 'array' ? json_encode($valueArr['value']) : $valueArr['value'],
             ]
         );
         $this->forgetCache();
@@ -48,7 +48,7 @@ class GlobalSetting extends Model
     {
         return 'dpanel-settings';
     }
-    public function get(mixed $key, $fetch = false)
+    public function get(mixed $key, $fetch = false, $onlyValue = true)
     {
         $settings = $this->getAll($fetch)->toArray();
         $filterSetting = is_array($key) ? [] : null;
@@ -65,6 +65,13 @@ class GlobalSetting extends Model
                 }
             }
         }
+
+        if ($onlyValue) {
+            if (array_key_exists('value', $filterSetting)) {
+                return $filterSetting['type'] == 'array' ? json_decode($filterSetting['value']) : $filterSetting['value'];
+            }
+        }
+
         return $filterSetting;
     }
 
@@ -115,5 +122,10 @@ class GlobalSetting extends Model
     public function fileType()
     {
         return 'file';
+    }
+
+    public function arrayType()
+    {
+        return 'array';
     }
 }

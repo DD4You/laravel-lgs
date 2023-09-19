@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('global_settings', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique()->index();
-            $table->enum('type', ['text','longtext','file'])->default('text');
+            $table->string('type')->default('text'); //['text','longtext','file', 'array']
             $table->string('label')->nullable();
             $table->string('hint')->nullable();
             $table->longText('value')->nullable();

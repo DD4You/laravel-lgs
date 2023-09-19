@@ -57,6 +57,11 @@ class SettingsSeeder extends Seeder
                 'label' => 'Address',
                 'value' => ''
             ],
+            'array_test' => [
+                'label' => 'Array Test',
+                'value' => ['item-1', 'item-2', 'item-3'],
+                'type' => settings()->arrayType(),
+            ],
             'facebook_url' => [
                 'label' => 'Facebook',
                 'value' => 'https://facebook.com/dd4youofficial'

@@ -6,7 +6,7 @@ if (!function_exists('g_settings')) {
         $settings = app()->make('\DD4You\Lgs\Models\GlobalSetting');
 
         if (empty($key)) {
-            return $settings;
+            return $settings->all();
         }
 
         return $settings->get($key, $fetch, $onlyValue);
